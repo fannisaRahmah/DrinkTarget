@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, AddViewDelegate, SetTargetDelegate {
+    
     func setTarget(data: Int) {
         setTargetLabel.setTitle(String(data) + " ml", for: .normal)
     }
@@ -41,41 +42,32 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         drinkScheduleTV.delegate = self
         drinkScheduleTV.dataSource = self
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToAddVC" {
             let destVC = segue.destination as! UINavigationController
             let topVC = destVC.topViewController as! AddViewController
-                topVC.delegate = self
-            
+            topVC.delegate = self
             topVC.tempData = passingModel
-            
             topVC.flag = self.flag
             topVC.position = self.position
+            
         } else if segue.identifier == "ToSetVC" {
             let destVC = segue.destination as! UINavigationController
             let topVC = destVC.topViewController as!
                 SetTargetViewController
-            
             topVC.delegate = self
-            
             topVC.tempData = setTargetLabel.currentTitle
-            
-            
         }
-        
-        
-            
     }
+    
     @IBAction func totalTargetButton(_ sender: Any) {
         performSegue(withIdentifier: "ToSetVC", sender: self)
     }
     
     @IBAction func resetButton(_ sender: Any) {
         self.models.removeAll()
-        
         drinkScheduleTV.reloadData()
         sumTarget()
     }
@@ -84,10 +76,8 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         passingModel = nil
         flag = 1
         performSegue(withIdentifier: "ToAddVC", sender: self)
-        
     }
     
-    //kalo rownya diklik
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if models[indexPath.row].isClicked == false {
             models[indexPath.row].isClicked = true
@@ -98,7 +88,6 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .automatic)
     }
     
-    //buat duplikat
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -113,13 +102,9 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         models = models.sorted(by: { $0.time < $1.time})
         
         let time = models[indexPath.row].time
-        
         let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
         formatter.timeZone = TimeZone.current
-        
-        
-        cell.schViewCell.layer.cornerRadius = 10
         
         let isClicked = models[indexPath.row].isClicked
         
@@ -135,16 +120,12 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         cell.targetTVC.text = "\(models[indexPath.row].target)" + " ml"
         cell.timeTVC.text = formatter.string(from: time)
         
+        cell.schViewCell.layer.cornerRadius = 10
         
         return cell
     }
     
-    
-    // Delete + Edit Row
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
+    // Delete + Edit Cell
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -156,11 +137,11 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             self.models.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
             tableView.endUpdates()
             
             self.sumTarget()
         }
+        
         deleteButton.backgroundColor = UIColor.red
         
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { [self] rowAction, indexPath in
@@ -169,6 +150,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             position = indexPath.row
             performSegue(withIdentifier: "ToAddVC", sender: self)
         }
+        
         editButton.backgroundColor = UIColor.blue
         
         return [deleteButton,editButton]
