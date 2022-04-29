@@ -86,10 +86,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-rj-PYj">
-                                <rect key="frame" x="82" y="134.5" width="182" height="31"/>
+                                <rect key="frame" x="82" y="134.5" width="232" height="31"/>
                                 <color key="tintColor" red="0.37254901959999998" green="0.51764705879999995" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Set your target"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Set your total target"/>
                                 <connections>
                                     <action selector="totalTargetButton:" destination="S8r-g7-tEh" eventType="touchUpInside" id="iUi-6j-toi"/>
                                     <segue destination="vud-Lt-WGj" kind="presentation" identifier="ToSetVC" id="f1I-cF-duB"/>
@@ -120,7 +120,7 @@
                             <constraint firstItem="edE-io-C0Q" firstAttribute="trailing" secondItem="XRV-aV-bbr" secondAttribute="trailing" id="kG1-mS-QYz"/>
                             <constraint firstItem="edE-io-C0Q" firstAttribute="leading" secondItem="XRV-aV-bbr" secondAttribute="leading" id="lEL-I7-6wj"/>
                             <constraint firstItem="NTx-rj-PYj" firstAttribute="leading" secondItem="I1U-2g-DDl" secondAttribute="trailing" constant="5" id="phn-eu-Sm2"/>
-                            <constraint firstItem="XRV-aV-bbr" firstAttribute="trailing" secondItem="NTx-rj-PYj" secondAttribute="trailing" constant="150" id="psd-b5-o50"/>
+                            <constraint firstItem="XRV-aV-bbr" firstAttribute="trailing" secondItem="NTx-rj-PYj" secondAttribute="trailing" constant="100" id="psd-b5-o50"/>
                             <constraint firstItem="pMu-ub-xcr" firstAttribute="centerY" secondItem="fsW-cL-y42" secondAttribute="centerY" id="r2e-te-dTD"/>
                             <constraint firstItem="Nqj-xY-CgB" firstAttribute="bottom" secondItem="XRV-aV-bbr" secondAttribute="bottom" constant="49" id="rmh-12-WVF"/>
                             <constraint firstItem="XRV-aV-bbr" firstAttribute="trailing" secondItem="fsW-cL-y42" secondAttribute="trailing" constant="20" id="s2h-AK-f4s"/>
@@ -260,7 +260,7 @@
             </objects>
             <point key="canvasLocation" x="2628.985507246377" y="83.705357142857139"/>
         </scene>
-        <!--Set Target-->
+        <!--Set Total Target-->
         <scene sceneID="zd8-Be-ILG">
             <objects>
                 <viewController id="ipg-8Z-s4b" customClass="SetTargetViewController" customModule="DrinkMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -308,7 +308,7 @@
                             <constraint firstItem="ZVl-PG-Saj" firstAttribute="trailing" secondItem="9yM-TM-v3l" secondAttribute="trailing" id="F5o-GA-Ha8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Set Target" id="PJa-Xc-j34">
+                    <navigationItem key="navigationItem" title="Set Total Target" id="PJa-Xc-j34">
                         <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="6WG-eT-GRF">
                             <connections>
                                 <action selector="backPressedButton:" destination="ipg-8Z-s4b" id="oKt-KV-zV7"/>
